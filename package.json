@@ -1,0 +1,15 @@
+{
+  "name": "fileflex-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Premium SEO-friendly file converter tools website with Next.js frontend and Express backend.",
+  "scripts": {
+    "install:all": "npm install && npm --prefix frontend install && npm --prefix backend install",
+    "dev": "concurrently \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
+    "build": "npm --prefix frontend run build",
+    "start": "npm --prefix backend start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

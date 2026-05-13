@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="FileFlex Tools">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2563eb"/>
+      <stop offset="0.55" stop-color="#06b6d4"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="url(#bg)"/>
+  <path d="M20 12h17l11 11v29H20V12z" fill="#fff"/>
+  <path d="M37 12v12h11" fill="#bfdbfe"/>
+  <path d="M26 32h16M26 39h16M26 46h10" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+</svg>
