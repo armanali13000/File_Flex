@@ -20,6 +20,7 @@ export default function Footer() {
         <div>
           <p className="font-black">Company</p>
           <div className="mt-3 grid gap-2 text-sm font-semibold text-slate-600 dark:text-slate-300">
+            <Link href="/about">About</Link>
             <Link href="/privacy-policy">Privacy Policy</Link>
             <Link href="/terms-and-conditions">Terms & Conditions</Link>
             <Link href="/contact">Contact</Link>

@@ -26,6 +26,7 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-2 md:flex">
           <Link className="rounded-full px-4 py-2 text-sm font-bold text-slate-700 hover:bg-blue-50 hover:text-brand dark:text-slate-200 dark:hover:bg-slate-800" href="/">Home</Link>
+          <Link className="rounded-full px-4 py-2 text-sm font-bold text-slate-700 hover:bg-blue-50 hover:text-brand dark:text-slate-200 dark:hover:bg-slate-800" href="/about">About</Link>
           <div className="relative">
             <button onClick={() => setToolsOpen((value) => !value)} className="flex items-center gap-1 rounded-full px-4 py-2 text-sm font-bold text-slate-700 hover:bg-blue-50 hover:text-brand dark:text-slate-200 dark:hover:bg-slate-800">
               Tools <ChevronDown className="h-4 w-4" />
@@ -53,6 +54,7 @@ export default function Navbar() {
       {open && (
         <div className="mx-auto mt-3 grid max-w-7xl gap-2 rounded-3xl border border-slate-100 bg-white p-3 shadow-soft md:hidden dark:border-slate-800 dark:bg-slate-900">
           <Link onClick={() => setOpen(false)} className="rounded-2xl px-4 py-3 font-bold" href="/">Home</Link>
+          <Link onClick={() => setOpen(false)} className="rounded-2xl px-4 py-3 font-bold" href="/about">About</Link>
           {tools.map((tool) => (
             <Link key={tool.slug} onClick={() => setOpen(false)} className="rounded-2xl px-4 py-3 font-bold hover:bg-blue-50 dark:hover:bg-slate-800" href={`/${tool.slug}`}>
               {tool.shortTitle}
