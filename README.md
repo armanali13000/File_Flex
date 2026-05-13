@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # FileFlex Tools
 
 FileFlex Tools is a premium, SEO-friendly file converter website with a Next.js frontend and Express backend. It is built without login, signup, or payments for now, while keeping the structure ready for future accounts, premium limits, and billing.
@@ -80,3 +81,6 @@ LIBREOFFICE_PATH=soffice
 - Queue workers for heavy conversions
 - Virus scanning integration
 - Cloud storage export
+=======
+# File_Flex
+>>>>>>> bf7bbfd8dc150db25b67b39a422cbcdbcbc57a93
