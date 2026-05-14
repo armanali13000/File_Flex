@@ -6,6 +6,7 @@ import path from 'node:path';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import 'pdfjs-dist/legacy/build/pdf.worker.mjs';
 import sharp from 'sharp';
 import { tempDir } from '../utils/files.js';
 
