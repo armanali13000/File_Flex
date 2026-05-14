@@ -18,7 +18,21 @@ if (!process.env.VERCEL) {
 
 app.set('trust proxy', 1);
 app.use(helmet());
-app.use(cors({ origin: process.env.CLIENT_ORIGIN || 'http://localhost:3000' }));
+app.use(cors({
+  origin(origin, callback) {
+    const configuredOrigins = (process.env.CLIENT_ORIGIN || 'http://localhost:3000')
+      .split(',')
+      .map((value) => value.trim())
+      .filter(Boolean);
+
+    if (!origin || configuredOrigins.includes(origin) || /^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin)) {
+      callback(null, true);
+      return;
+    }
+
+    callback(new Error(`CORS blocked origin: ${origin}`));
+  }
+}));
 app.use(express.json({ limit: '50kb' }));
 app.use(rateLimit({ windowMs: 15 * 60 * 1000, limit: 80, standardHeaders: true, legacyHeaders: false }));
 
