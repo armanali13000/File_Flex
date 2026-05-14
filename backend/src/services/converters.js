@@ -6,7 +6,6 @@ import path from 'node:path';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
-import { PDFParse } from 'pdf-parse';
 import sharp from 'sharp';
 import { tempDir } from '../utils/files.js';
 
@@ -131,11 +130,79 @@ export async function pdfToWord(file) {
 }
 
 async function extractPdfText(filePath) {
+  ensurePdfParseGeometryGlobals();
+  const { PDFParse } = await import('pdf-parse');
   const parser = new PDFParse({ data: await fs.promises.readFile(filePath) });
   try {
     return parser.getText();
   } finally {
     await parser.destroy();
+  }
+}
+
+function ensurePdfParseGeometryGlobals() {
+  if (!globalThis.DOMMatrix) {
+    globalThis.DOMMatrix = class DOMMatrix {
+      constructor(init) {
+        const values = Array.isArray(init) ? init : [];
+        this.a = values[0] ?? 1;
+        this.b = values[1] ?? 0;
+        this.c = values[2] ?? 0;
+        this.d = values[3] ?? 1;
+        this.e = values[4] ?? 0;
+        this.f = values[5] ?? 0;
+      }
+
+      multiplySelf() {
+        return this;
+      }
+
+      preMultiplySelf() {
+        return this;
+      }
+
+      translateSelf() {
+        return this;
+      }
+
+      scaleSelf() {
+        return this;
+      }
+
+      rotateSelf() {
+        return this;
+      }
+    };
+  }
+
+  if (!globalThis.DOMPoint) {
+    globalThis.DOMPoint = class DOMPoint {
+      constructor(x = 0, y = 0, z = 0, w = 1) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.w = w;
+      }
+
+      matrixTransform() {
+        return this;
+      }
+    };
+  }
+
+  if (!globalThis.DOMRect) {
+    globalThis.DOMRect = class DOMRect {
+      constructor(x = 0, y = 0, width = 0, height = 0) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.top = y;
+        this.right = x + width;
+        this.bottom = y + height;
+        this.left = x;
+      }
+    };
   }
 }
 
