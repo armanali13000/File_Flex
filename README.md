@@ -54,7 +54,11 @@ NEXT_PUBLIC_SITE_URL=https://your-domain.com
 
 ### Backend on Render/Railway
 
+For Word/Excel to PDF in production, deploy the backend to a host that can run LibreOffice. Vercel serverless functions do not include the `soffice` command.
+
 Root directory: `backend`
+
+Runtime: Docker
 
 Start command:
 
@@ -70,6 +74,13 @@ CLIENT_ORIGIN=https://your-domain.com
 MAX_FILE_SIZE_MB=25
 TEMP_FILE_TTL_MINUTES=30
 LIBREOFFICE_PATH=soffice
+```
+
+After the backend is deployed, update the Vercel frontend environment:
+
+```bash
+NEXT_PUBLIC_API_URL=https://your-backend.onrender.com
+NEXT_PUBLIC_SITE_URL=https://fileflexone.vercel.app
 ```
 
 ## Future Roadmap

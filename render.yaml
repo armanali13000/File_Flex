@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: fileflex-backend
+    runtime: docker
+    rootDir: backend
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CLIENT_ORIGIN
+        value: https://fileflexone.vercel.app
+      - key: MAX_FILE_SIZE_MB
+        value: 25
+      - key: TEMP_FILE_TTL_MINUTES
+        value: 30
+      - key: LIBREOFFICE_PATH
+        value: soffice
