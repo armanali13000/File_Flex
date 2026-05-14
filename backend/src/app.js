@@ -40,6 +40,19 @@ app.get('/health', (req, res) => {
   res.json({ ok: true, service: 'FileFlex Tools API' });
 });
 
+app.get('/api/status', (req, res) => {
+  res.json({
+    ok: true,
+    service: 'FileFlex Tools API',
+    version: 'fileflex-backend-2026-05-14',
+    routes: [
+      'POST /api/pdf-to-word',
+      'POST /api/word-to-pdf',
+      'POST /api/excel-to-pdf'
+    ]
+  });
+});
+
 app.use('/api', converterRoutes);
 app.use(notFound);
 app.use(errorHandler);
