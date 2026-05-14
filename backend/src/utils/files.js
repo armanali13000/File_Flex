@@ -1,7 +1,10 @@
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 
-export const tempDir = path.resolve(process.cwd(), 'uploads');
+export const tempDir = process.env.VERCEL
+  ? path.join(os.tmpdir(), 'fileflex-uploads')
+  : path.resolve(process.cwd(), 'uploads');
 
 export function ensureTempDir() {
   fs.mkdirSync(tempDir, { recursive: true });
