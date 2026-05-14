@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: 'FileFlex Tools',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://fileflexone.vercel.app',
   apiUrl: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
 };
 
